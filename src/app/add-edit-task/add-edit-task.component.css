@@ -1,0 +1,11 @@
+﻿.row-margin{
+  margin-top:10px;
+}
+
+.boldFont {
+  font-weight: bold;
+}
+
+.container-fluid input, .container-fluid select {
+  min-width: 200px;
+}

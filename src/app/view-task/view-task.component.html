@@ -1,0 +1,53 @@
+﻿<div class="container">
+  <div class="row">
+    <div class="col-sm-6 boldFont">
+      Task: <input type="text" [(ngModel)]="TaskName" name="TaskName" (change)="SearchChange()" />
+    </div>    
+    <div class="col-sm-6 boldFont">
+      Parent Task: <input type="text" [(ngModel)]="ParentTask" name="ParentTask" (change)="SearchChange()" />
+    </div>    
+  </div>  
+  <div class="row" style="margin-top:10px;">
+    <div class="col-sm-3 boldFont">
+      Priority From: <input type="number" [(ngModel)]="PriorityFrom" name="PriorityFrom" (change)="SearchChange()" style="width:120px;"/>
+    </div>
+    <div class="col-sm-3">
+      Priority To: <input type="number" [(ngModel)]="PriorityTo" name="PriorityTo" (change)="SearchChange()" style="width:120px;" />
+    </div>
+    <div class="col-sm-3">
+      Start Date: <input type="date" [(ngModel)]="StartDate" name="StartDate" (change)="SearchChange()" style="width:120px;" />      
+    </div>
+    <div class="col-sm-3">
+      End Date: <input type="date" [(ngModel)]="EndDate" name="EndDate" (change)="SearchChange()" style="width:120px;"/>
+    </div>
+  </div>  
+</div>
+<div class="container">
+  <h2>View Task</h2>
+  <table class="table table-bordered" style="width:100%">
+    <thead>
+      <tr>
+        <th>Task</th>
+        <th>Parent</th>
+        <th>Priority</th>
+        <th>Start</th>
+        <th>End</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of taskinfo">
+        <td>{{x.TaskName}}</td>
+        <td>{{x.ParentTask?.Parent_Task}}</td>
+        <td>{{x.Priority}}</td>
+        <td>{{x.Start_Date | date:'dd/MM/yyyy'}}</td>
+        <td>{{x.End_Date | date:'dd/MM/yyyy'}}</td>
+        <td>
+          <input type="button" value="Edit" [hidden]="(x.IsTaskEnded == 1)" (click)="EditTask(x.Task_ID)" />&nbsp;
+          <input type="button" value="End Task" [hidden]="(x.IsTaskEnded == 1)" (click)="EndTask(x.Task_ID)" />
+          <span [hidden]="(x.IsTaskEnded != 1)">Task is ended</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

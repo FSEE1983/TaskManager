@@ -1,0 +1,65 @@
+﻿<div class="container-fluid">
+ 
+  <div class="row row-margin">
+    <div class="col-sm-3 boldFont">
+      Task:
+    </div>
+    <div class="col-sm-9">
+      <input type="text"  [(ngModel)]="taskinfo.TaskName" name="TaskName" class="wid" />
+    </div>
+  </div>
+  <div class="row row-margin">
+    <div class="col-sm-3 boldFont">
+      Priority:
+    </div>
+    <div class="col-sm-9">
+      <div class="d-flex align-content-center">
+        <span class="font-weight-bold mr-2 mt-1">0</span>
+        <input style="width:auto" type="range" min="0" max="30" [(ngModel)]="taskinfo.Priority" name="Priority" />
+        <span class="font-weight-bold ml-2 mt-1">30</span>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="row row-margin">
+    <div class="col-sm-3 boldFont">
+      Parent Task:
+    </div>
+    <div class="col-sm-9">
+      <select [(ngModel)]="taskinfo.Parent_ID" >
+        <option value="0">Select</option>
+        <option *ngFor="let pTask of ListParentTask" [ngValue]="pTask.Parent_ID">{{pTask.Parent_Task}}</option>
+      </select>
+      
+    </div>
+    </div>
+
+    <div class="row row-margin">
+      <div class="col-sm-3 boldFont">
+        Start Date:
+      </div>
+      <div class="col-sm-9">
+        <input type="date" [ngModel]="taskinfo.Start_Date | date:'yyyy-MM-dd'" (ngModelChange)="taskinfo.Start_Date = $event"  name="Start_Date" />
+      </div>
+    </div>
+    <div class="row row-margin">
+      <div class="col-sm-3 boldFont">
+        End Date:
+      </div>
+      <div class="col-sm-9">
+        <input type="date" [ngModel]="taskinfo.End_Date | date:'yyyy-MM-dd'" (ngModelChange)="taskinfo.End_Date = $event"  name="End_Date"  />
+      </div>
+    </div>
+  
+  <div class="row row-margin">
+    <div class="col-sm-3">
+      
+    </div>
+    <div class="col-sm-9">
+      <button style="margin-right:20px"  class="btn btn-outline-dark"  (click)="SaveTask()">{{ taskinfo.Task_ID > 0 ? 'Update ' : 'Add' }} Task</button>
+      <button class="btn btn-outline-dark" >reset</button>
+    </div>
+  </div>
+
+  </div>
