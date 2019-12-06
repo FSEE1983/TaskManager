@@ -41,6 +41,8 @@ export class ViewTaskComponent implements OnInit {
         this.ServiceInfo.EndTask(id).subscribe((data: any) => { this.LoadTask(); });
         
     }
+  
+  //Method to Search task details...
     SearchChange() {
         this.taskinfo = this.TaskinfoFromService;
         if (this.TaskName != undefined && this.TaskName.length > 0) {
